@@ -1,0 +1,47 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+import java.net.*;
+import org.jsoup.*;
+
+public class Parser {
+  private static String getUrlSource(String url) {
+    try {
+      return Jsoup.parse(new URL(url).openStream(), "UTF-8", url).html();
+      //return Jsoup.connect(url).get().html();
+    } catch (IOException e) {
+    }
+    return null;
+  }
+  private boolean isChineseCharacter (char x) {
+    return Character.isIdeographic(x);
+  }
+  /*
+  private static String getUrlSource(String url) {
+    try {
+      URL myUrl = new URL(url);
+     Scanner urlScanner = new Scanner(myUrl.openStream(), "UTF-8");
+     StringBuilder sb = new StringBuilder();
+     while (urlScanner.hasNextLine()) {
+        sb.append(urlScanner.nextLine() + "\n");
+     }
+     urlScanner.close();
+     return sb.toString();
+    } catch (IOException e) {
+    }
+    return null;
+  }
+  */
+  public static void main (String[] args) {
+    String html = getUrlSource("http://www.huayuworld.org/");
+    Scanner htmlScanner = new Scanner (html);
+    htmlScanner.useDelimiter("");
+    String current = "";
+    while (htmlScanner.hasNext()) {
+      char c = htmlScanner.next().charAt(0);
+      current+=c;
+      if (current
+    }
+    //System.out.println(html);
+  }
+}
