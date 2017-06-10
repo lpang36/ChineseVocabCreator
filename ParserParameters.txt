@@ -1,5 +1,5 @@
 From URL: no
 URL: http:\\huayuworld.com
-Source file: C:\Users\L\Documents\Computer_Science\Chinese\Sample.txt
+Source file: C:\Users\L\Documents\Computer_Science\ChineseVocabCreator\Sample.txt
 Encode method: 1
-Write file: C:\Users\L\Documents\Computer_Science\Chinese\Output.txt
+Write file: C:\Users\L\Documents\Computer_Science\ChineseVocabCreator\Output.txt
