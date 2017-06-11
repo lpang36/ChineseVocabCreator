@@ -32,6 +32,8 @@ Sub CreatePresentation()
     SimpGreen = 0
     ColumnNum = 20
     
+    ' **********Do not touch code below***********
+    
     FileName = ActivePresentation.Path & "\" & FileName
     ImageName = ActivePresentation.Path & "\" & ImageName
     ' Dim FileNum As Integer
@@ -65,7 +67,6 @@ Sub CreatePresentation()
     For Each DataLineRaw In var_String
         If Count Mod 2 = 0 Then
             DataLineTrad = CStr(DataLineRaw)
-            DataLineTrad = Left(DataLineTrad, Len(DataLineTrad) - 1)
         End If
         If Count Mod 2 = 1 Then
             DataLineSimp = CStr(DataLineRaw)
@@ -85,8 +86,8 @@ Sub CreatePresentation()
                 TradSize = DefaultTradSize
                 SimpSize = DefaultSimpSize
             Else
-                TradSize = DefaultTradSize * 2 \ Length
-                SimpSize = DefaultSimpSize * 2 \ Length
+                TradSize = DefaultTradSize * 3 \ Length
+                SimpSize = DefaultSimpSize * 3 \ Length
             End If
             With TradBox.TextFrame.TextRange.Font
                 .Size = TradSize
