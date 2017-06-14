@@ -1,5 +1,3 @@
-From URL: no
-URL: http:\\huayuworld.com
 Source file: C:\Users\L\Documents\Computer_Science\ChineseVocabCreator\Sample.txt
 Automatically detect encoding: yes
 Encode method: 1

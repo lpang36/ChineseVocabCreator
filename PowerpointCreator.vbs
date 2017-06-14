@@ -20,7 +20,7 @@ Sub CreatePresentation()
     ImageName = "home.png"
     DefaultTradSize = 200
     DefaultSimpSize = 200
-    DefaultPadding = 20
+    DefaultPadding = 0
     FontName = "SimSun"
     TradBold = True
     SimpBold = True
@@ -45,6 +45,8 @@ Sub CreatePresentation()
     Dim SlideCount As Integer
     Dim Width As Integer
     Dim Height As Integer
+    ActivePresentation.PageSetup.SlideHeight = 600
+    ActivePresentation.PageSetup.SlideWidth = 800
     Width = ActivePresentation.PageSetup.SlideWidth
     Height = ActivePresentation.PageSetup.SlideHeight
     Count = 0
@@ -67,9 +69,23 @@ Sub CreatePresentation()
     For Each DataLineRaw In var_String
         If Count Mod 2 = 0 Then
             DataLineTrad = CStr(DataLineRaw)
+            Dim objRegex As Object
+            Set objRegex = CreateObject("vbscript.regexp")
+            With objRegex
+                .Global = True
+                .Pattern = "[\u0000-\u4E00]+"
+                DataLineTrad = .Replace(DataLineTrad, vbNullString)
+            End With
         End If
         If Count Mod 2 = 1 Then
             DataLineSimp = CStr(DataLineRaw)
+            ' Dim objRegex As Object
+            Set objRegex = CreateObject("vbscript.regexp")
+            With objRegex
+                .Global = True
+                .Pattern = "[\u0000-\u4E00]+"
+                DataLineSimp = .Replace(DataLineSimp, vbNullString)
+            End With
             Length = Len(DataLineTrad)
             Dim Current As Slide
             Dim oLayout As CustomLayout
@@ -153,3 +169,5 @@ Sub CreatePresentation()
         Next j
     Next i
 End Sub
+
+
