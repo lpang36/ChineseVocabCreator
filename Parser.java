@@ -2,7 +2,6 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 import java.nio.file.*;
-import java.net.*;
 
 public class Parser {
   private static boolean isChineseCharacter (char x) {
@@ -134,11 +133,11 @@ public class Parser {
       }
       count++;
     }
-    file = paramArray[2];
-    autoEncode = paramArray[3].toLowerCase().contains("yes");
-    encode = Integer.parseInt(paramArray[4]);
-    spaces = paramArray[5].toLowerCase().contains("yes");
-    output = paramArray[6];
+    file = paramArray[0];
+    autoEncode = paramArray[1].toLowerCase().contains("yes");
+    encode = Integer.parseInt(paramArray[2]);
+    spaces = paramArray[3].toLowerCase().contains("yes");
+    output = paramArray[4];
     String source;
     Scanner sourceScanner = null;
       try {

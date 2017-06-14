@@ -1,5 +1,5 @@
-Source file: C:\Users\L\Documents\Computer_Science\ChineseVocabCreator\Sample.txt
+Source file: Sample.txt
 Automatically detect encoding: yes
 Encode method: 1
 Ignore spaces: yes
-Write file: C:\Users\L\Documents\Computer_Science\ChineseVocabCreator\Output.txt
+Write file: Output.txt
