@@ -3,17 +3,8 @@ import java.lang.*;
 import java.io.*;
 import java.nio.file.*;
 import java.net.*;
-import org.jsoup.*;
 
 public class Parser {
-  private static String getUrlSource(String url) {
-    try {
-      return Jsoup.parse(new URL(url).openStream(), "UTF-8", url).html();
-      //return Jsoup.connect(url).get().html();
-    } catch (IOException e) {
-    }
-    return null;
-  }
   private static boolean isChineseCharacter (char x) {
     return Character.isIdeographic(x);
   }
@@ -126,8 +117,6 @@ public class Parser {
     Scanner paramScanner = new Scanner(param);
     String[] paramArray = new String[10]; //for safety
     int count = 0;
-    boolean fromURL = false;
-    String url;
     String file;
     boolean autoEncode = true;
     int encode = 1;
@@ -145,8 +134,6 @@ public class Parser {
       }
       count++;
     }
-    fromURL = paramArray[0].toLowerCase().contains("yes");
-    url = paramArray[1];
     file = paramArray[2];
     autoEncode = paramArray[3].toLowerCase().contains("yes");
     encode = Integer.parseInt(paramArray[4]);
@@ -154,16 +141,10 @@ public class Parser {
     output = paramArray[6];
     String source;
     Scanner sourceScanner = null;
-    if (fromURL) {
-      source = getUrlSource(url);
-      sourceScanner = new Scanner (source);
-    }
-    else {
       try {
         sourceScanner = new Scanner (new File(file),"UTF-8");
       } catch (FileNotFoundException e) {
       }
-    }
     String currentTrad = "";
     String currentSimp = "";
     boolean inBracket = false;
@@ -176,16 +157,10 @@ public class Parser {
     }
     if (autoEncode) {
       Scanner copyScanner = null;
-      if (fromURL) {
-        source = getUrlSource(url);
-        copyScanner = new Scanner (source);
-      }
-      else {
         try {
           copyScanner = new Scanner (new File(file),"UTF-8");
         } catch (FileNotFoundException e) {
         }
-      }
       copyScanner.useDelimiter("");
       int[] params = autoDetectEncode(copyScanner);
       encode = params[0];
