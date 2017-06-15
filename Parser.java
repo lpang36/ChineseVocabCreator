@@ -1,6 +1,10 @@
-import java.util.*;
-import java.lang.*;
-import java.io.*;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.io.File;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.io.FileOutputStream;
 import java.nio.file.*;
 
 public class Parser {
